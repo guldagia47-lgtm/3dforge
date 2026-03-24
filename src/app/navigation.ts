@@ -1,4 +1,6 @@
-export type AppPath = "/" | "/auth" | "/auth/verify" | "/auth/callback" | "/dashboard" | "/create-model" | "/library";
+import { getAllBlogSlugs } from "@/data/blogPosts";
+
+export type AppPath = string;
 
 export type NavItem = {
   label: string;
@@ -6,37 +8,58 @@ export type NavItem = {
   description: string;
 };
 
-export const navItems: NavItem[] = [
-  { label: "Landing", href: "/", description: "Overview and positioning" },
-  { label: "Dashboard", href: "/dashboard", description: "Usage and activity" },
-  { label: "Create Model", href: "/create-model", description: "Prompt and upload flow" },
-  { label: "Library", href: "/library", description: "Saved assets and exports" },
+/** Hrefs only — labels come from i18n in AppShell */
+export const navItemHrefs: { href: AppPath; description: string }[] = [
+  { href: "/", description: "Overview and positioning" },
+  { href: "/dashboard", description: "Usage and activity" },
+  { href: "/create-model", description: "Prompt and upload flow" },
+  { href: "/library", description: "Saved assets and exports" },
+  { href: "/blog", description: "Guides on AI 3D, Supabase, Vite, SEO" },
 ];
 
-export const routeTitles: Record<AppPath, string> = {
-  "/": "ModelForge | Generate 3D models from visuals and prompts",
-  "/auth": "ModelForge | Sign in",
-  "/auth/verify": "ModelForge | Verify email",
-  "/auth/callback": "ModelForge | Completing sign in",
-  "/dashboard": "ModelForge | Dashboard",
-  "/create-model": "ModelForge | Create Model",
-  "/library": "ModelForge | Library",
-};
+const staticPaths = new Set([
+  "/",
+  "/auth",
+  "/auth/verify",
+  "/auth/callback",
+  "/dashboard",
+  "/create-model",
+  "/library",
+  "/blog",
+]);
+
+const validBlogSlugs = new Set(getAllBlogSlugs());
+
+export function isBlogPostPath(path: string): boolean {
+  if (!path.startsWith("/blog/")) {
+    return false;
+  }
+
+  const slug = path.slice(6).replace(/\/+$/, "");
+
+  return slug.length > 0 && validBlogSlugs.has(slug);
+}
 
 export function normalizePath(pathname: string): AppPath {
   const cleaned = pathname.replace(/\/+$/, "") || "/";
 
-  if (
-    cleaned === "/" ||
-    cleaned === "/auth" ||
-    cleaned === "/auth/verify" ||
-    cleaned === "/auth/callback" ||
-    cleaned === "/dashboard" ||
-    cleaned === "/create-model" ||
-    cleaned === "/library"
-  ) {
+  if (staticPaths.has(cleaned)) {
+    return cleaned;
+  }
+
+  if (isBlogPostPath(cleaned)) {
     return cleaned;
   }
 
   return "/";
+}
+
+export function getBlogSlugFromPath(path: AppPath): string | null {
+  if (!path.startsWith("/blog/")) {
+    return null;
+  }
+
+  const slug = path.slice(6).replace(/\/+$/, "");
+
+  return validBlogSlugs.has(slug) ? slug : null;
 }
