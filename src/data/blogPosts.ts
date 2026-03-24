@@ -5,132 +5,198 @@ export type BlogPost = {
   keywords: { en: string; tr: string };
   title: { en: string; tr: string };
   excerpt: { en: string; tr: string };
-  /** Semantic sections for readable layout + SEO */
   sections: { en: string[]; tr: string[] };
 };
 
+/**
+ * All posts anchor on 3D models and branch into workflows that match ModelForge:
+ * create flow, formats, preview, library, providers, quotas.
+ */
 export const blogPosts: BlogPost[] = [
   {
-    slug: "ai-text-to-3d-pipeline-2025",
-    publishedAt: "2026-03-20",
-    readingMinutes: { en: 7, tr: 7 },
-    keywords: {
-      en: "text to 3D, AI mesh generation, Tripo AI, Meshy AI, GLB export, product design 2025",
-      tr: "metinden 3D, yapay zeka mesh, Tripo AI, Meshy AI, GLB dışa aktarım, ürün tasarımı 2025",
-    },
-    title: {
-      en: "How teams ship AI text-to-3D pipelines in 2025",
-      tr: "Ekipler 2025’te yapay zekâ metin–3D hatlarını nasıl yayına alıyor?",
-    },
-    excerpt: {
-      en: "From prompt hygiene to provider routing and Supabase-backed libraries—what actually moves the needle for production 3D workflows.",
-      tr: "Prompt disiplininden sağlayıcı yönlendirmeye ve Supabase destekli kütüphanelere kadar: üretim 3D iş akışlarında fark yaratan pratikler.",
-    },
-    sections: {
-      en: [
-        "Product and game studios are converging on hybrid pipelines: large language models draft constraints, while specialized 3D APIs output meshes with predictable topology budgets.",
-        "The winning pattern is normalization—every provider response is mapped to the same task record, preview URL, and export format so UI and billing stay coherent.",
-        "Security still matters: never expose service keys in the browser; gate generation behind authenticated sessions and per-user quotas stored in Postgres.",
-        "SEO angle: publish case studies with structured headings, real metrics (time-to-first-preview, revision count), and schema-friendly summaries so technical buyers can find you.",
-      ],
-      tr: [
-        "Ürün ve oyun stüdyoları hibrit hatlarda buluşuyor: büyük dil modelleri kısıtları yazıyor, uzman 3D API’ler ise öngörülebilir topoloji bütçesiyle mesh üretiyor.",
-        "Kazanan desen normalizasyon: her sağlayıcı yanıtı aynı görev kaydına, önizleme URL’sine ve dışa aktarım formatına eşlenir; arayüz ve faturalama tutarlı kalır.",
-        "Güvenlik hâlâ kritik: servis anahtarlarını tarayıcıya koymayın; üretimi kimliği doğrulanmış oturumlar ve Postgres’te kullanıcı kotasıyla koruyun.",
-        "SEO tarafı: yapılandırılmış başlıklar, gerçek metrikler (ilk önizlemeye süre, revizyon sayısı) ve özet paragraflarla teknik alıcıların sizi bulmasını kolaylaştırın.",
-      ],
-    },
-  },
-  {
-    slug: "vite-spa-vercel-seo",
-    publishedAt: "2026-03-18",
+    slug: "3d-models-prompts-reference-images",
+    publishedAt: "2026-03-22",
     readingMinutes: { en: 6, tr: 6 },
     keywords: {
-      en: "Vite SPA SEO, Vercel rewrites, single page app, canonical URL, Core Web Vitals",
-      tr: "Vite SPA SEO, Vercel rewrite, tek sayfa uygulama, canonical URL, Core Web Vitals",
+      en: "3D models, text to 3D, reference images, prompt engineering, mesh quality",
+      tr: "3D modeller, metinden 3D, referans görsel, prompt mühendisliği, mesh kalitesi",
     },
     title: {
-      en: "Vite SPAs on Vercel: SEO checks that still matter in 2026",
-      tr: "Vercel üzerinde Vite SPA: 2026’da hâlâ önemli olan SEO kontrolleri",
+      en: "Better 3D models start with prompts and reference images",
+      tr: "Daha iyi 3D modeller: prompt ve referans görsellerle başlar",
     },
     excerpt: {
-      en: "Client-side routing is fine if crawlers receive index.html. Here is the rewrite pattern, metadata hygiene, and performance signals search engines still reward.",
-      tr: "Ön uç yönlendirme, tarayıcıya index.html gittiği sürece sorun değil. Rewrite kalıbı, meta veri disiplini ve arama motorlarının ödüllendirdiği performans sinyalleri.",
+      en: "How clear intent, style tags, and a small set of reference uploads steer AI toward meshes you can actually ship—not just impressive turntable shots.",
+      tr:
+        "Net niyet, stil etiketleri ve birkaç referans görsel, yapay zekâyı yalnızca etkileyici turntable değil, gerçekten teslim edilebilir mesh’lere yönlendirir.",
     },
     sections: {
       en: [
-        "Configure a catch-all rewrite to index.html so deep links like /auth/callback do not 404 at the edge.",
-        "Set unique titles and meta descriptions per route in your SPA—search engines may execute JavaScript, but clear signals reduce ambiguity.",
-        "Keep LCP healthy: prioritize hero text and avoid blocking fonts; Vite code-splitting helps but image discipline matters more for marketing pages.",
-        "Use canonical links when the same content could appear with query parameters; pair with hreflang only when you have separate localized URLs.",
+        "Treat the prompt as a brief: name the object, materials, scale cues (real-world size or stylized), and the poly budget you expect for games, AR, or product pages.",
+        "Reference images reduce ambiguity—front and side orthographic shots outperform random Pinterest collages when you want consistent silhouette and proportions.",
+        "In a ModelForge-style flow, you combine prompt + uploads in one request; the studio should show prompt length, file count, and style so users iterate deliberately.",
+        "After generation, compare preview topology against your target: hard edges for CAD-like parts, softer smoothing for characters, and consistent UV-friendly seams for texturing.",
       ],
       tr: [
-        "Kenar sunucuda /auth/callback gibi derin linklerin 404 vermemesi için catch-all rewrite ile index.html’e yönlendirin.",
-        "SPA’da rota başına benzersiz title ve meta description kullanın; JS çalıştırılsa da net sinyaller belirsizliği azaltır.",
-        "LCP’yi koruyun: kahraman metni ve font engellemelerini yönetin; Vite parçalama yardımcı olur ama pazarlama sayfalarında görsel disiplin daha kritiktir.",
-        "Aynı içerik sorgu parametreleriyle de görünebiliyorsa canonical kullanın; ayrı yerelleştirilmiş URL’ler yoksa hreflang zorunlu değildir.",
+        "Prompt’u bir brif gibi kullanın: nesneyi, malzemeleri, ölçek ipuçlarını (gerçek dünya veya stilize) ve oyun, AR veya ürün sayfası için beklediğiniz poligon bütçesini yazın.",
+        "Referans görseller belirsizliği azaltır—silüet ve oran tutarlılığı için rastgele kolajlar yerine ön ve yan ortografik çekimler daha iyi sonuç verir.",
+        "ModelForge tarzı akışta prompt ve yüklemeler tek istekte birleşir; stüdyo prompt uzunluğunu, dosya sayısını ve stili göstererek kullanıcının bilinçli iterasyon yapmasını sağlamalıdır.",
+        "Üretimden sonra önizleme topolojisini hedefinize göre kontrol edin: CAD benzeri parçalar için sert kenarlar, karakterler için yumuşak smoothing, doku için UV dostu dikişler.",
       ],
     },
   },
   {
-    slug: "supabase-auth-email-production",
-    publishedAt: "2026-03-15",
+    slug: "3d-model-formats-glb-obj-stl",
+    publishedAt: "2026-03-20",
     readingMinutes: { en: 5, tr: 5 },
     keywords: {
-      en: "Supabase Auth, email verification, PKCE, redirect URLs, Resend SMTP",
-      tr: "Supabase Auth, e-posta doğrulama, PKCE, yönlendirme URL’leri, Resend SMTP",
+      en: "GLB, GLTF, OBJ, STL, 3D model export, PBR materials, 3D printing",
+      tr: "GLB, GLTF, OBJ, STL, 3D model dışa aktarım, PBR malzeme, 3D baskı",
     },
     title: {
-      en: "Supabase Auth in production: email, redirects, and rate limits",
-      tr: "Üretimde Supabase Auth: e-posta, yönlendirmeler ve hız limitleri",
+      en: "GLB, OBJ, and STL: picking the right format for your 3D models",
+      tr: "GLB, OBJ ve STL: 3D modelleriniz için doğru format",
     },
     excerpt: {
-      en: "A practical checklist for Site URL, Redirect URLs, custom SMTP, and the over_email_send_rate_limit error teams hit during launch week.",
-      tr: "Site URL, Redirect URL’leri, özel SMTP ve lansman haftasında sık görülen over_email_send_rate_limit hatası için pratik kontrol listesi.",
+      en: "Each format tells a different story—single-file delivery, legacy pipelines, or printable solids. Match the export to where your 3D model will live next.",
+      tr: "Her format farklı bir senaryo anlatır—tek dosya teslimi, eski hatlar veya baskıya uygun gövde. Dışa aktarımı 3D modelinizin bir sonraki durağına göre seçin.",
     },
     sections: {
       en: [
-        "Align VITE_APP_URL (or your deployed origin) with Supabase Auth URL configuration so magic links land on a route your SPA actually serves.",
-        "When using custom SMTP, monitor provider quotas separately from Supabase—two rate limits can stack.",
-        "Prefer PKCE flows for browser clients and keep the session lock noise in mind when many hooks call getSession simultaneously.",
-        "Document the verification journey in your marketing site: it reduces support tickets and gives you indexable help content.",
+        "GLB/GLTF bundles meshes, materials, and animations—ideal when your app previews 3D models in the browser and you want one download for stakeholders.",
+        "OBJ remains universal for DCC handoff; pair it with MTL when you need basic materials, but expect extra steps for modern PBR workflows.",
+        "STL encodes surface geometry for 3D printing and CAD checks; it is a poor choice for textured game assets but perfect when the 3D model is a physical prototype.",
+        "In a generation studio, surface the format in the UI next to task IDs so support teams can trace which export a customer actually downloaded.",
       ],
       tr: [
-        "VITE_APP_URL (veya canlı origin) değerini Supabase Auth URL ayarlarıyla hizalayın; böylece sihirli linkler SPA’nızın gerçekten sunduğu rotaya düşer.",
-        "Özel SMTP kullanırken sağlayıcı kotasını Supabase’ten ayrı izleyin; iki hız limiti üst üste binebilir.",
-        "Tarayıcı istemcileri için PKCE akışını tercih edin; birçok hook aynı anda getSession çağırdığında oturum kilidi gürültüsünü göz önünde bulundurun.",
-        "Doğrulama yolculuğunu pazarlama sitesinde anlatın: destek yükünü azaltır ve indekslenebilir yardım içeriği sağlar.",
+        "GLB/GLTF; mesh, malzeme ve animasyonları tek pakette taşır—3D modelleri tarayıcıda önizlediğiniz ve paydaşlar için tek indirme istediğinizde idealdir.",
+        "OBJ, DCC devri için evrenseldir; temel malzemeler için MTL ile eşleyin, ancak modern PBR iş akışlarında ek adımlar gerektiğini unutmayın.",
+        "STL yüzey geometrisini 3D baskı ve CAD kontrolleri için kodlar; dokulu oyun varlığı için uygun değildir ama fiziksel prototip 3D modeli için uygundur.",
+        "Bir üretim stüdyosunda formatı görev kimliklerinin yanında gösterin; destek ekipleri müşterinin hangi dışa aktarımı indirdiğini izleyebilsin.",
       ],
     },
   },
   {
-    slug: "generative-3d-commerce-trends",
-    publishedAt: "2026-03-10",
-    readingMinutes: { en: 6, tr: 6 },
+    slug: "preview-3d-models-browser-workflow",
+    publishedAt: "2026-03-18",
+    readingMinutes: { en: 5, tr: 5 },
     keywords: {
-      en: "generative 3D, ecommerce assets, SKU visualization, NeRF, Gaussian splatting",
-      tr: "üretken 3D, e-ticaret varlıkları, SKU görselleştirme, NeRF, Gaussian splatting",
+      en: "3D model viewer, WebGL, Three.js, orbit controls, GLB preview",
+      tr: "3D model görüntüleyici, WebGL, Three.js, yörünge kontrolleri, GLB önizleme",
     },
     title: {
-      en: "Generative 3D for commerce: what buyers evaluate beyond the demo",
-      tr: "Ticaret için üretken 3D: alıcılar demodan sonra neye bakıyor?",
+      en: "Why in-browser preview matters for every 3D model you generate",
+      tr: "Ürettiğiniz her 3D model için tarayıcı içi önizleme neden önemli?",
     },
     excerpt: {
-      en: "Material accuracy, rigging readiness, and pipeline export stability beat flashy turntables when teams adopt AI meshes for catalogs.",
-      tr: "Ekipler kataloglar için yapay zekâ mesh’e geçerken gösterişli turntable’dan çok malzeme doğruluğu, rig hazırlığı ve dışa aktarım istikrarı önem kazanır.",
+      en: "Orbiting a mesh before download catches scale errors, flipped normals, and missing materials early—critical when AI-generated 3D models iterate quickly.",
+      tr: "İndirmeden önce mesh’i döndürmek ölçek hatalarını, ters normalleri ve eksik malzemeleri erken yakalar—yapay zekâ 3D modelleri hızlı iterasyon yaptığında kritiktir.",
     },
     sections: {
       en: [
-        "Merchandising teams ask for repeatable lighting and color fidelity—document how your prompts preserve brand palettes.",
-        "Downstream tools (Blender, Unity, USDZ) expose different constraints; publish which formats you certify for handoff.",
-        "Trend: combining splat previews with mesh exports for AR try-on flows—be explicit about which step is client-side only.",
-        "English + Turkish documentation improves regional SEO for manufacturers sourcing digital twins in EMEA.",
+        "A dedicated viewer (orbit, zoom, neutral lighting) is faster than opening Blender for a sanity check when designers only need to approve silhouette and proportions.",
+        "Support GLB first, then OBJ/STL fallbacks so marketing and engineering see the same 3D model state without installing plugins.",
+        "Frame the camera automatically on load—users abandon flows when the mesh loads off-screen after a long generation wait.",
+        "Pair preview with download links and task metadata so the 3D model in the browser is provably the same asset stored in your library.",
       ],
       tr: [
-        "Merchandising ekipleri tekrarlanabilir ışık ve renk sadakati ister; prompt’larınızın marka paletlerini nasıl koruduğunu belgeleyin.",
-        "Aşağı akış araçları (Blender, Unity, USDZ) farklı kısıtlar çıkarır; hangi formatları devreye almak için onayladığınızı yayınlayın.",
-        "Eğilim: AR deneme akışlarında splat önizlemesi ile mesh dışa aktarımını birleştirmek—hangi adımın yalnızca istemci tarafında olduğunu açık yazın.",
-        "İngilizce + Türkçe dokümantasyon, EMEA’da dijital ikiz arayan üreticiler için bölgesel SEO’yu güçlendirir.",
+        "Ayrılmış bir görüntüleyici (yörünge, yakınlaştırma, nötr ışık), tasarımcılar yalnızca silüet ve oran onayı istediğinde Blender açmaktan daha hızlıdır.",
+        "Önce GLB destekleyin, ardından OBJ/STL yedekleri ekleyin; pazarlama ve mühendislik aynı 3D model durumunu eklenti yüklemeden görsün.",
+        "Yüklemede kamerayı otomatik kadrajlayın—uzun üretim bekleyişinden sonra mesh ekran dışında kalırsa kullanıcılar akışı terk eder.",
+        "Önizlemeyi indirme bağlantıları ve görev meta verisiyle eşleyin; tarayıcıdaki 3D modelin kütüphanedeki varlıkla aynı olduğu izlenebilir olsun.",
+      ],
+    },
+  },
+  {
+    slug: "3d-model-library-organization",
+    publishedAt: "2026-03-16",
+    readingMinutes: { en: 6, tr: 6 },
+    keywords: {
+      en: "3D model library, asset management, Supabase, metadata, search filters",
+      tr: "3D model kütüphanesi, varlık yönetimi, Supabase, meta veri, arama filtreleri",
+    },
+    title: {
+      en: "Organizing a 3D model library your team will actually use",
+      tr: "Ekibinizin gerçekten kullanacağı bir 3D model kütüphanesi",
+    },
+    excerpt: {
+      en: "Saved 3D models pile up fast. Prompt text, provider path, timestamps, and soft-delete patterns turn a flat list into a searchable product surface.",
+      tr: "Kaydedilen 3D modeller hızla birikir. Prompt metni, sağlayıcı yolu, zaman damgaları ve yumuşak silme desenleri düz listeyi aranabilir bir ürün yüzeyine dönüştürür.",
+    },
+    sections: {
+      en: [
+        "Store the generation prompt and reference count with every 3D model row—future you will not remember which adjective fixed the handle geometry.",
+        "Expose provider labels (e.g., Tripo AI, Meshy AI, or blended paths) so producers can compare quality trends per vendor over time.",
+        "Filter by date and text search on prompts or task IDs; thumbnails or preview URLs make scanning faster than filenames like export_final_v7.glb.",
+        "Daily quotas tied to successful saves encourage deliberate generation: users think twice before spamming variants that clutter the library.",
+      ],
+      tr: [
+        "Her 3D model satırında üretim promptunu ve referans sayısını saklayın—gelecekteki siz hangi sıfatın tutamak geometrisini düzelttiğini hatırlamaz.",
+        "Üreticilerin zaman içinde sağlayıcı başına kalite trendlerini karşılaştırabilmesi için sağlayıcı etiketlerini (ör. Tripo AI, Meshy AI veya birleşik yollar) gösterin.",
+        "Tarihe ve prompt veya görev kimliği metin aramasına göre filtreleyin; export_final_v7.glb gibi dosya adlarından çok küçük resim veya önizleme URL’leri taramayı hızlandırır.",
+        "Başarılı kayıtlara bağlı günlük kotalar bilinçli üretimi teşvik eder: kullanıcılar kütüphaneyi dolduran varyantları boşuna denemekten kaçınır.",
+      ],
+    },
+  },
+  {
+    slug: "tripo-meshy-two-step-3d-models",
+    publishedAt: "2026-03-14",
+    readingMinutes: { en: 6, tr: 6 },
+    keywords: {
+      en: "Tripo AI, Meshy AI, 3D model generation, topology, texture refinement",
+      tr: "Tripo AI, Meshy AI, 3D model üretimi, topoloji, doku iyileştirme",
+    },
+    title: {
+      en: "Two-step 3D models: creation with Tripo AI, refinement with Meshy AI",
+      tr: "İki aşamalı 3D modeller: Tripo AI ile oluşturma, Meshy AI ile iyileştirme",
+    },
+    excerpt: {
+      en: "Splitting base mesh creation from polish mirrors how studios work—first volume and silhouette, then topology-friendly cleanup and textures.",
+      tr: "Temel mesh oluşturmayı rötuştan ayırmak stüdyo pratiğini yansıtır—önce hacim ve silüet, ardından topoloji dostu temizlik ve dokular.",
+    },
+    sections: {
+      en: [
+        "Tripo-class steps excel at fast volumetric shapes from prompts and images; lean on them when exploration speed matters more than final poly count.",
+        "Meshy-class passes tighten edge flow, materials, and export readiness—schedule them once the creative direction is locked.",
+        "Normalize both stages into one task record so dashboards show a single timeline for the 3D model instead of orphaned provider IDs.",
+        "Let users pick auto-routing when they are experimenting, but expose manual provider choice for art directors who already know which engine fits the brief.",
+      ],
+      tr: [
+        "Tripo sınıfı adımlar prompt ve görsellerden hızlı hacimsel şekillerde güçlüdür; keşif hızı nihai poligon sayısından önemliyken bunlara yaslanın.",
+        "Meshy sınıfı geçişler kenar akışını, malzemeleri ve dışa aktarım hazırlığını sıkılaştırır—yaratıcı yön kilitlendikten sonra planlayın.",
+        "Her iki aşamayı tek görev kaydında birleştirin; böylece paneller 3D model için yalnız bir zaman çizelgesi gösterir, yetim sağlayıcı kimlikleri kalmaz.",
+        "Kullanıcılar denerken otomatik yönlendirmeye izin verin; brifi hangi motorun karşıladığını bilen sanat yönetmenleri için manuel sağlayıcı seçimini de sunun.",
+      ],
+    },
+  },
+  {
+    slug: "3d-models-product-pages-ar",
+    publishedAt: "2026-03-12",
+    readingMinutes: { en: 5, tr: 5 },
+    keywords: {
+      en: "3D models ecommerce, AR preview, product visualization, GLB web embed",
+      tr: "3D modeller e-ticaret, AR önizleme, ürün görselleştirme, GLB web gömme",
+    },
+    title: {
+      en: "From studio to storefront: using 3D models on product pages and AR",
+      tr: "Stüdyodan vitrine: ürün sayfalarında ve AR’da 3D modeller",
+    },
+    excerpt: {
+      en: "The same 3D model that previews in your generation app can power configurators and AR try-on—if you standardize scale, materials, and file size early.",
+      tr: "Üretim uygulamanızda önizlenen 3D model, ölçek, malzeme ve dosya boyutunu erken standartlaştırdığınızda yapılandırıcıları ve AR denemeyi besleyebilir.",
+    },
+    sections: {
+      en: [
+        "E-commerce teams want GLB under a few megabytes with baked lighting tricks; generation studios should warn when high-poly outputs need decimation before web embed.",
+        "AR shells expect consistent forward axes; document the orientation convention for every exported 3D model to avoid floating shoes and sideways furniture.",
+        "Reuse the browser viewer component from your app on marketing pages—parity between internal previews and public embeds reduces “it looked different” tickets.",
+        "Track which 3D models actually convert: tie analytics events to model IDs saved in your library, not just page views.",
+      ],
+      tr: [
+        "E-ticaret ekipleri birkaç megabayt altında GLB ve pişmiş ışık hileleri ister; üretim stüdyoları yüksek poligon çıktıların web gömmeden önce seyreltme gerektirdiğinde uyarın.",
+        "AR kabukları tutarlı ileri eksen bekler; yüzen ayakkabı ve yatay mobilya olmaması için her dışa aktarılan 3D model için yönelim kurallarını belgeleyin.",
+        "Pazarlama sayfalarında uygulamanızdaki tarayıcı görüntüleyiciyi yeniden kullanın; iç önizleme ile kamuya açık gömüller arasında tutarlılık “farklı görünüyordu” taleplerini azaltır.",
+        "Hangi 3D modellerin dönüşüm getirdiğini izleyin: yalnızca sayfa görüntülemesi değil, kütüphanede saklanan model kimliklerine bağlı analitik olayları kullanın.",
       ],
     },
   },

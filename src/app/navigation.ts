@@ -14,7 +14,7 @@ export const navItemHrefs: { href: AppPath; description: string }[] = [
   { href: "/dashboard", description: "Usage and activity" },
   { href: "/create-model", description: "Prompt and upload flow" },
   { href: "/library", description: "Saved assets and exports" },
-  { href: "/blog", description: "Guides on AI 3D, Supabase, Vite, SEO" },
+  { href: "/blog", description: "3D models: prompts, formats, preview, library, delivery" },
 ];
 
 const staticPaths = new Set([

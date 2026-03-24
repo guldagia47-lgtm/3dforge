@@ -73,13 +73,15 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
       <aside className="mt-12 rounded-3xl border border-white/10 bg-white/4 p-5 text-sm leading-7 text-slate-400">
         {locale === "tr" ? (
           <>
-            Bu içeriğin İngilizce sürümünü okumak için üst menüden dili <strong className="text-slate-200">English</strong> olarak
-            değiştirin. URL aynı kalır; arama motorları başlık ve açıklamayı seçtiğiniz dile göre görür.
+            Bu yazı <strong className="text-slate-200">3D modeller</strong> odağındadır ve ModelForge’daki oluşturma, önizleme ve
+            kütüphane akışıyla uyumludur. İngilizce sürüm için üst menüden dili <strong className="text-slate-200">English</strong>{" "}
+            yapın; URL değişmez, başlık ve açıklama seçtiğiniz dile göre güncellenir.
           </>
         ) : (
           <>
-            Switch the site language to <strong className="text-slate-200">Türkçe</strong> in the header to read this article in
-            Turkish. The URL stays the same while titles and descriptions follow your selected locale.
+            This article is centered on <strong className="text-slate-200">3D models</strong> and aligns with ModelForge’s create,
+            preview, and library flow. Switch the header language to <strong className="text-slate-200">Türkçe</strong> for Turkish;
+            the URL stays the same while titles and descriptions follow your locale.
           </>
         )}
       </aside>

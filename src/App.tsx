@@ -95,8 +95,8 @@ export default function App() {
         keywords:
           metaKey === "blog"
             ? locale === "tr"
-              ? "3D AI, Supabase, Vite SEO, generative 3D"
-              : "3D AI, Supabase, Vite SEO, generative 3D"
+              ? "3D modeller, GLB, Tripo AI, Meshy AI, 3D kütüphane, prompt"
+              : "3D models, GLB, Tripo AI, Meshy AI, 3D library, prompts"
             : undefined,
       });
       return;

@@ -12,7 +12,7 @@ const en = {
       dashboard: "Track usage, jobs, and subscription status in the ModelForge dashboard.",
       createModel: "Create 3D models from prompts and reference images in the ModelForge studio.",
       library: "Browse, preview, and manage saved 3D models in your ModelForge library.",
-      blog: "Guides on AI-assisted 3D, Supabase Auth, Vite on Vercel, and SEO for technical teams.",
+      blog: "Articles on 3D models: prompts, formats, preview, library workflows, Tripo AI & Meshy AI, and product-ready delivery.",
     },
     title: {
       home: "ModelForge | Generate 3D models from visuals and prompts",
@@ -22,7 +22,7 @@ const en = {
       dashboard: "ModelForge | Dashboard",
       createModel: "ModelForge | Create Model",
       library: "ModelForge | Library",
-      blog: "ModelForge | Blog — AI, 3D, and web development",
+      blog: "ModelForge | Blog — 3D models, workflows, and delivery",
       blogPost: "ModelForge Blog",
     },
   },
@@ -106,13 +106,13 @@ const en = {
     ],
   },
   blog: {
-    eyebrow: "Insights",
+    eyebrow: "3D models",
     title: "Blog",
     intro:
-      "Practical guides on AI-assisted 3D, Supabase auth, Vite deployments, and SEO for modern product teams — in English and Turkish.",
+      "Deep dives into 3D models and the workflows around them—prompts, reference images, GLB/OBJ/STL choices, in-browser preview, library hygiene, Tripo AI and Meshy AI handoffs, and taking assets to product pages. English and Turkish.",
     empty: "No articles found.",
     seoNote:
-      "Each article is available in both languages. URLs stay the same; switch the site language to read the other version.",
+      "Every post is written around 3D models and matches how ModelForge thinks: create, preview, save, iterate. Switch language for the other version; the URL stays the same.",
   },
 };
 
@@ -126,7 +126,7 @@ const tr: TranslationTree = {
       dashboard: "ModelForge panelinde kullanım, işler ve abonelik durumunu izleyin.",
       createModel: "ModelForge stüdyosunda prompt ve referans görsellerden 3D model oluşturun.",
       library: "Kayıtlı 3D modellerinizi ModelForge kütüphanesinde görüntüleyin, önizleyin ve yönetin.",
-      blog: "Teknik ekipler için yapay zekâ destekli 3D, Supabase Auth, Vercel’de Vite ve SEO rehberleri.",
+      blog: "3D modeller üzerine yazılar: prompt, formatlar, önizleme, kütüphane, Tripo AI ve Meshy AI, ürüne hazır teslim.",
     },
     title: {
       home: "ModelForge | Görseller ve promptlarla 3D model üretin",
@@ -136,7 +136,7 @@ const tr: TranslationTree = {
       dashboard: "ModelForge | Panel",
       createModel: "ModelForge | Model oluştur",
       library: "ModelForge | Kütüphane",
-      blog: "ModelForge | Blog — Yapay zeka, 3D ve web geliştirme",
+      blog: "ModelForge | Blog — 3D modeller, iş akışları ve teslimat",
       blogPost: "ModelForge Blog",
     },
   },
@@ -220,13 +220,13 @@ const tr: TranslationTree = {
     ],
   },
   blog: {
-    eyebrow: "İçgörüler",
+    eyebrow: "3D modeller",
     title: "Blog",
     intro:
-      "Modern ürün ekipleri için yapay zekâ destekli 3D, Supabase kimlik doğrulama, Vite dağıtımları ve SEO üzerine pratik rehberler — İngilizce ve Türkçe.",
+      "3D modeller ve çevrelerindeki iş akışlarına odaklı içerikler—prompt ve referans görseller, GLB/OBJ/STL seçimi, tarayıcı önizlemesi, kütüphane düzeni, Tripo AI ve Meshy AI devri, ürün sayfası ve AR. İngilizce ve Türkçe.",
     empty: "Makale bulunamadı.",
     seoNote:
-      "Her yazı iki dilde de mevcuttur. URL aynı kalır; diğer sürümü okumak için site dilini değiştirin.",
+      "Yazıların odağı 3D modellerdir ve ModelForge mantığıyla uyumludur: oluştur, önizle, kaydet, yinele. Diğer dil için site dilini değiştirin; URL değişmez.",
   },
 };
 
